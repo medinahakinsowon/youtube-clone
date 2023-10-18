@@ -1,10 +1,21 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {Box, CardContent, CardMedia, Typography} from '@mui/material'
-import {CheckCircle} from '@mui/icons-material'
-import { demoProfilePicture } from '../utils/constants'
-const ChannelCard = ({channelDetail}) => {
-  <Box sx={{ boxShadow:'none', borderRadius: '20px'}}>
+import React from 'react';
+import {Link} from 'react-router-dom';
+import { Box, CardContent, CardMedia, Typography } from '@mui/material';
+import { CheckCircle } from '@mui/icons-material';
+import { demoProfilePicture } from '../utils/constants';
+
+
+const ChannelCard = ({channelDetail, marginTop}) => {
+  <Box sx={{ 
+    boxShadow:'none', 
+    borderRadius: '20px',
+    display: 'flex',
+    justifyContent : 'center',
+     alignItems : 'center',
+     width:{xs: '350px', md: '320px'},
+     height : '326px',
+     margin : 'auto'
+    }}>
      <Link to={`/channel/${channelDetail?.id?.channelId}`}>
        <CardContent sx={{ display:'flex', flexDirection:'column', justifyContent:'center', textAlign:'center', color: '#fff'}}>
           <CardMedia 
@@ -18,7 +29,7 @@ const ChannelCard = ({channelDetail}) => {
           </Typography>
           {channelDetail?.statistics?.subscriberCount && (
             <Typography>
-              
+              {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString()} Subscribers
             </Typography>
           )}
        </CardContent>
@@ -26,4 +37,4 @@ const ChannelCard = ({channelDetail}) => {
   </Box>
 }
 
-export default ChannelCard
+export default ChannelCard;
